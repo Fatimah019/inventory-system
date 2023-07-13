@@ -19,34 +19,26 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
-// import { useTranslation } from "react-i18next";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import authProvider from "./authProvider";
 import { AppIcon } from "./components/app-icon";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
+  FoodItemsCreate,
+  FoodItemsEdit,
+  FoodItemsList,
+  FoodItemsShow,
+} from "./pages/food-items";
 import {
   CategoryCreate,
   CategoryEdit,
   CategoryList,
   CategoryShow,
-} from "./pages/categories";
+} from "./pages/food-inventory";
 import { supabaseClient } from "./utility";
 
 function App() {
-  // const { t, i18n } = useTranslation();
-
-  // const i18nProvider = {
-  //   translate: (key: string, params: object) => t(key, params),
-  //   changeLocale: (lang: string) => i18n.changeLanguage(lang),
-  //   getLocale: () => i18n.language,
-  // };
 
   return (
     <BrowserRouter>
@@ -61,24 +53,23 @@ function App() {
               authProvider={authProvider}
               routerProvider={routerBindings}
               notificationProvider={notificationProvider}
-              // i18nProvider={i18nProvider}
               resources={[
                 {
-                  name: "Food-Items",
-                  list: "/Food-Items",
-                  create: "/Food-Items/create",
-                  edit: "/Food-Items/edit/:id",
-                  show: "/Food-Items/show/:id",
+                  name: "food-items",
+                  list: "/food-items",
+                  create: "/food-items/create",
+                  edit: "/food-items/edit/:id",
+                  show: "/food-items/show/:id",
                   meta: {
                     canDelete: true,
                   },
                 },
                 {
-                  name: "Food-Inventory",
-                  list: "/Food-Inventory",
-                  create: "/Food-Inventory/create",
-                  edit: "/Food-Inventory/edit/:id",
-                  show: "/Food-Inventory/show/:id",
+                  name: "food-inventory",
+                  list: "/food-inventory",
+                  create: "/food-inventory/create",
+                  edit: "/food-inventory/edit/:id",
+                  show: "/food-inventory/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -110,15 +101,15 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="Food-Items" />}
+                    element={<NavigateToResource resource="food-items" />}
                   />
-                  <Route path="/Food-Items">
-                    <Route index element={<BlogPostList />} />
-                    <Route path="create" element={<BlogPostCreate />} />
-                    <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} />
+                  <Route path="/food-items">
+                    <Route index element={<FoodItemsList />} />
+                    <Route path="create" element={<FoodItemsCreate />} />
+                    <Route path="edit/:id" element={<FoodItemsEdit />} />
+                    <Route path="show/:id" element={<FoodItemsShow />} />
                   </Route>
-                  <Route path="/Food-Inventory">
+                  <Route path="/food-inventory">
                     <Route index element={<CategoryList />} />
                     <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />

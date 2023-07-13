@@ -108,14 +108,14 @@
   "dashboard": {
     "title": "Dashboard"
   },
-  "Food Items": {
-    "Food Items": "Food Items",
+  "food-items": {
+    "food-items": "food-items",
     "fields": {
-      "title": "Name",
-      "content": "Description",
-      "status": "Status",
-      "categoryId": "Category",
-      "quantity":"Quantity"
+      "title": "title",
+      "content": "content",
+      "status": "status",
+      "categoryId": "categoryId",
+      "quantity":"quantity"
     },
     "titles": {
       "create": "Create Food Items",
@@ -124,12 +124,12 @@
       "show": "Show Food Items"
     }
   },
-  "Food Inventory": {
-    "Food Inventory": "Food Inventory",
+  "food-inventory": {
+    "food-inventory": "food-items",
     "fields": {
-      "title": "Name",
-      "description": "Description",
-      "quantity":"Quantity"
+      "title": "title",
+      "description": "description",
+      "quantity":"quantity"
     },
     "titles": {
       "create": "Create Food Inventory",
