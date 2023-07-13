@@ -108,8 +108,8 @@
   "dashboard": {
     "title": "Dashboard"
   },
-  "blog_posts": {
-    "blog_posts": "Food Items",
+  "Food Items": {
+    "Food Items": "Food Items",
     "fields": {
       "title": "Name",
       "content": "Description",
@@ -124,8 +124,8 @@
       "show": "Show Food Items"
     }
   },
-  "categories": {
-    "categories": "Food Inventory",
+  "Food Inventory": {
+    "Food Inventory": "Food Inventory",
     "fields": {
       "title": "Name",
       "description": "Description",

@@ -64,21 +64,21 @@ function App() {
               // i18nProvider={i18nProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
+                  name: "Food-Items",
+                  list: "/Food-Items",
+                  create: "/Food-Items/create",
+                  edit: "/Food-Items/edit/:id",
+                  show: "/Food-Items/show/:id",
                   meta: {
                     canDelete: true,
                   },
                 },
                 {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
+                  name: "Food-Inventory",
+                  list: "/Food-Inventory",
+                  create: "/Food-Inventory/create",
+                  edit: "/Food-Inventory/edit/:id",
+                  show: "/Food-Inventory/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -98,7 +98,7 @@ function App() {
                         Title={({ collapsed }) => (
                           <ThemedTitleV2
                             collapsed={collapsed}
-                            text="refine Project"
+                            text="Food Inventory Management"
                             icon={<AppIcon />}
                           />
                         )}
@@ -110,15 +110,15 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="blog_posts" />}
+                    element={<NavigateToResource resource="Food-Items" />}
                   />
-                  <Route path="/blog-posts">
+                  <Route path="/Food-Items">
                     <Route index element={<BlogPostList />} />
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
                     <Route path="show/:id" element={<BlogPostShow />} />
                   </Route>
-                  <Route path="/categories">
+                  <Route path="/Food-Inventory">
                     <Route index element={<CategoryList />} />
                     <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
@@ -141,7 +141,7 @@ function App() {
                         title={
                           <ThemedTitleV2
                             collapsed={false}
-                            text="refine Project"
+                            text="Food Inventory Management"
                             icon={<AppIcon />}
                           />
                         }
