@@ -19,7 +19,7 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import authProvider from "./authProvider";
 import { AppIcon } from "./components/app-icon";
@@ -40,13 +40,13 @@ import {
 import { supabaseClient } from "./utility";
 
 function App() {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
 
-  const i18nProvider = {
-    translate: (key: string, params: object) => t(key, params),
-    changeLocale: (lang: string) => i18n.changeLanguage(lang),
-    getLocale: () => i18n.language,
-  };
+  // const i18nProvider = {
+  //   translate: (key: string, params: object) => t(key, params),
+  //   changeLocale: (lang: string) => i18n.changeLanguage(lang),
+  //   getLocale: () => i18n.language,
+  // };
 
   return (
     <BrowserRouter>
@@ -61,7 +61,7 @@ function App() {
               authProvider={authProvider}
               routerProvider={routerBindings}
               notificationProvider={notificationProvider}
-              i18nProvider={i18nProvider}
+              // i18nProvider={i18nProvider}
               resources={[
                 {
                   name: "blog_posts",
@@ -148,7 +148,7 @@ function App() {
                         formProps={{
                           defaultValues: {
                             email: "info@refine.dev",
-                            password: "refine-supabase",
+                            password: "refine",
                           },
                         }}
                       />
