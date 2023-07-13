@@ -109,52 +109,50 @@
     "title": "Dashboard"
   },
   "blog_posts": {
-    "blog_posts": "Blog Posts",
+    "blog_posts": "Food Items",
     "fields": {
-      "id": "Id",
-      "title": "Title",
-      "content": "Content",
+      "title": "Name",
+      "content": "Description",
       "status": "Status",
-      "created_at": "Created At",
-      "categoryId": "Category"
+      "categoryId": "Category",
+      "quantity":"Quantity"
     },
     "titles": {
-      "create": "Create Blog Post",
-      "edit": "Edit Blog Post",
-      "list": "Blog Posts",
-      "show": "Show Blog Post"
+      "create": "Create Food Items",
+      "edit": "Edit Food Items",
+      "list": "Food Items",
+      "show": "Show Food Items"
     }
   },
   "categories": {
-    "categories": "Categories",
+    "categories": "Food Inventory",
     "fields": {
-      "id": "Id",
-      "title": "Title",
-      "created_at": "Created At"
+      "title": "Name",
+      "description": "Description",
+      "quantity":"Quantity"
     },
     "titles": {
-      "create": "Create Category",
-      "edit": "Edit Category",
-      "list": "Categories",
-      "show": "Show Category"
+      "create": "Create Food Inventory",
+      "edit": "Edit Food Inventory",
+      "list": "Food Inventory",
+      "show": "Show Food Inventory"
     }
   },
   "documentTitle": {
     "default": "refine",
-    "suffix": " | refine",
     "blog_posts": {
-      "list": "Blog Posts | refine",
-      "show": "#{{id}} Show Blog Post | refine",
-      "edit": "#{{id}} Edit Blog Post | refine",
-      "create": "Create new Blog Post | refine",
-      "clone": "#{{id}} Clone Blog Post | refine"
+      "list": "Food Items",
+      "show": "#{{id}} Show Blog Post",
+      "edit": "#{{id}} Edit Blog Post",
+      "create": "Create new Blog Post",
+      "clone": "#{{id}} Clone Blog Post"
     },
     "categories": {
-      "list": "Categories | refine",
-      "show": "#{{id}} Show Category | refine",
-      "edit": "#{{id}} Edit Category | refine",
-      "create": "Create new Category | refine",
-      "clone": "#{{id}} Clone Category | refine"
+      "list": "Food Inventory",
+      "show": "#{{id}} Show Category",
+      "edit": "#{{id}} Edit Category",
+      "create": "Create new Category",
+      "clone": "#{{id}} Clone Category"
     }
   },
   "table": {
