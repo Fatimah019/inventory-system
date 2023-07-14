@@ -2,17 +2,15 @@ import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
-
 import IconButton from "@mui/material/IconButton";
-
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import { HamburgerMenu, RefineThemedLayoutV2HeaderProps } from "@refinedev/mui";
-
 import React, { useContext } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
+import { Link } from "react-router-dom";
 
 type IUser = {
   id: number;
@@ -24,9 +22,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   sticky = true,
 }) => {
   const { mode, setMode } = useContext(ColorModeContext);
-
   const { data: user } = useGetIdentity<IUser>();
-
 
   return (
     <AppBar position={sticky ? "sticky" : "relative"}>
@@ -40,8 +36,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             alignItems="center"
             gap="16px"
           >
-
-
+            <Link to="/">Home</Link>
             <IconButton
               color="inherit"
               onClick={() => {
@@ -51,7 +46,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
               {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
             </IconButton>
 
-            {(user?.avatar || user?.name) && (
+            {user?.avatar || user?.name ? (
               <Stack
                 direction="row"
                 gap="16px"
@@ -73,7 +68,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                 )}
                 <Avatar src={user?.avatar} alt={user?.name} />
               </Stack>
-            )}
+            ) : null}
           </Stack>
         </Stack>
       </Toolbar>
