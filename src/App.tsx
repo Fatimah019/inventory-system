@@ -37,9 +37,9 @@ import {
   CategoryShow,
 } from "./pages/food-inventory";
 import { supabaseClient } from "./utility";
+import Home from "./Home";
 
 function App() {
-
   return (
     <BrowserRouter>
       <RefineKbarProvider>
@@ -99,10 +99,7 @@ function App() {
                     </Authenticated>
                   }
                 >
-                  <Route
-                    index
-                    element={<NavigateToResource resource="food-items" />}
-                  />
+                  <Route path="/" element={<Home />} />
                   <Route path="/food-items">
                     <Route index element={<FoodItemsList />} />
                     <Route path="create" element={<FoodItemsCreate />} />
