@@ -1,4 +1,4 @@
-# refine-project
+# refine-inventory-management
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
@@ -7,7 +7,9 @@
 </div>
 <br/>
 
-This [refine](https://github.com/refinedev/refine) project was generated with [superplate](https://github.com/pankod/superplate).
+This inventory management website is built using Refine, React, Material UI, and Supabase. It is a powerful and easy-to-use tool that allows you to track your inventory, manage your orders, and keep your business running smoothly.
+
+The website is built on a modern stack that is scalable, secure, and reliable. It is also easy to customize, so you can tailor it to the specific needs of your business.
 
 ## Getting Started
 
