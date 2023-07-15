@@ -21,15 +21,14 @@ function Home() {
 }
 const containerStyles = {
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "column" as "column",
   justifyContent: "center",
   alignItems: "center",
-  // height: "100vh",
-  overflow: "hidden", 
+  overflow: "hidden",
 };
 
 const textContainerStyles = {
-  textAlign: "center",
+  align: "center",
   marginBottom: "2rem",
   animation: "slide-in-left 1s ease",
 };
