@@ -108,8 +108,8 @@
   "dashboard": {
     "title": "Dashboard"
   },
-  "food-items": {
-    "food-items": "food-items",
+  "items": {
+    "items": "items",
     "fields": {
       "title": "title",
       "content": "content",
@@ -118,37 +118,37 @@
       "quantity":"quantity"
     },
     "titles": {
-      "create": "Create Food Items",
-      "edit": "Edit Food Items",
-      "list": "Food Items",
-      "show": "Show Food Items"
+      "create": "Create Items",
+      "edit": "Edit Items",
+      "list": "Items",
+      "show": "Show Items"
     }
   },
-  "food-inventory": {
-    "food-inventory": "food-items",
+  "inventory": {
+    "inventory": "inventory",
     "fields": {
       "title": "title",
       "description": "description",
       "quantity":"quantity"
     },
     "titles": {
-      "create": "Create Food Inventory",
-      "edit": "Edit Food Inventory",
-      "list": "Food Inventory",
-      "show": "Show Food Inventory"
+      "create": "Create Inventory",
+      "edit": "Edit Inventory",
+      "list": "Inventory",
+      "show": "Show Inventory"
     }
   },
   "documentTitle": {
     "default": "refine",
-    "blog_posts": {
-      "list": "Food Items",
+    "items": {
+      "list": "Items",
       "show": "#{{id}} Show Blog Post",
       "edit": "#{{id}} Edit Blog Post",
       "create": "Create new Blog Post",
       "clone": "#{{id}} Clone Blog Post"
     },
     "categories": {
-      "list": "Food Inventory",
+      "list": "Inventory",
       "show": "#{{id}} Show Category",
       "edit": "#{{id}} Edit Category",
       "create": "Create new Category",
