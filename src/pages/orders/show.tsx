@@ -3,9 +3,9 @@ import { IResourceComponentsProps, useShow } from "@refinedev/core";
 import { Show } from "@refinedev/mui";
 import { format } from "date-fns";
 
-export const ItemsShow: React.FC<IResourceComponentsProps> = () => {
+export const OrdersShow: React.FC<IResourceComponentsProps> = () => {
   const { queryResult } = useShow({
-    resource: "items",
+    resource: "orders",
   });
 
   const { data, isLoading, isError } = queryResult;
@@ -15,15 +15,16 @@ export const ItemsShow: React.FC<IResourceComponentsProps> = () => {
         <Typography>Loading</Typography>
       </Show>
     );
+
   return (
     <Show>
-      <Typography>Product Name: {data?.data?.product_name}</Typography>
-      <Typography>Product Size: {data?.data?.size.toUpperCase()}</Typography>
-      <Typography>Price: {data?.data?.price}</Typography>
-      <Typography>Currency: {data?.data?.currency}</Typography>
+      <Typography>Product Name: {data?.data?.product?.product_name}</Typography>
+      <Typography>Product Size: {data?.data?.product?.size}</Typography>
+      <Typography>Price: {data?.data?.product?.price}</Typography>
+      <Typography>Currency: {data?.data?.product?.currency}</Typography>
       <Typography>Quantity: {data?.data?.quantity}</Typography>
       <Typography>
-        Date Created:{" "}
+        Date Ordered:{" "}
         {format(new Date(data.data.created_at), "dd/MM/yyyy HH:mm a")}
       </Typography>
     </Show>

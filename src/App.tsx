@@ -24,18 +24,13 @@ import authProvider from "./authProvider";
 import { AppIcon } from "./components/app-icon";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
+import { ItemsCreate, ItemsEdit, ItemsList, ItemsShow } from "./pages/items";
 import {
-  ItemsCreate,
-  ItemsEdit,
-  ItemsList,
-  ItemsShow,
-} from "./pages/items";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/inventory";
+  OrdersCreate,
+  OrdersEdit,
+  OrdersList,
+  OrdersShow,
+} from "./pages/orders";
 import { supabaseClient } from "./utility";
 import Home from "./Home";
 
@@ -65,11 +60,11 @@ function App() {
                   },
                 },
                 {
-                  name: "inventory",
-                  list: "/inventory",
-                  create: "/inventory/create",
-                  edit: "/inventory/edit/:id",
-                  show: "/inventory/show/:id",
+                  name: "orders",
+                  list: "/orders",
+                  create: "/orders/create",
+                  edit: "/orders/edit/:id",
+                  show: "/orders/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -83,7 +78,10 @@ function App() {
               <Routes>
                 <Route
                   element={
-                    <Authenticated fallback={<CatchAllNavigate to="/login" />}>
+                    <Authenticated
+                      key=""
+                      fallback={<CatchAllNavigate to="/login" />}
+                    >
                       <ThemedLayoutV2
                         Header={() => <Header sticky />}
                         Title={({ collapsed }) => (
@@ -106,17 +104,17 @@ function App() {
                     <Route path="edit/:id" element={<ItemsEdit />} />
                     <Route path="show/:id" element={<ItemsShow />} />
                   </Route>
-                  <Route path="/inventory">
-                    <Route index element={<CategoryList />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                  <Route path="/orders">
+                    <Route index element={<OrdersList />} />
+                    <Route path="create" element={<OrdersCreate />} />
+                    <Route path="edit/:id" element={<OrdersEdit />} />
+                    <Route path="show/:id" element={<OrdersShow />} />
                   </Route>
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
                 <Route
                   element={
-                    <Authenticated fallback={<Outlet />}>
+                    <Authenticated key="" fallback={<Outlet />}>
                       <NavigateToResource />
                     </Authenticated>
                   }
