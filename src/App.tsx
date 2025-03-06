@@ -131,12 +131,6 @@ function App() {
                             icon={<AppIcon />}
                           />
                         }
-                        formProps={{
-                          defaultValues: {
-                            email: "info@refine.dev",
-                            password: "refine",
-                          },
-                        }}
                       />
                     }
                   />
