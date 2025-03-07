@@ -39,7 +39,13 @@ export const ItemsList: React.FC<IResourceComponentsProps> = () => {
     },
     { field: "price", headerName: "Product Price", width: 100 },
     { field: "currency", headerName: "Currency", width: 100 },
-    { field: "quantity", headerName: "Quantity", width: 100 },
+    {
+      field: "quantity",
+      headerName: "Quantity",
+      width: 100,
+      renderCell: ({ row }) =>
+        row.quantity < 1 ? "Out of stock" : row.quantity,
+    },
     {
       field: "actions",
       headerName: "Actions",
