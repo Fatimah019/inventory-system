@@ -2,9 +2,21 @@ import { Autocomplete, TextField, Typography } from "@mui/material";
 import { IResourceComponentsProps, useList } from "@refinedev/core";
 import { Create } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
+import { useEffect, useMemo, useState } from "react";
 import { Controller } from "react-hook-form";
+
 export const OrdersCreate: React.FC<IResourceComponentsProps> = () => {
-  const { saveButtonProps, register, watch, control, setValue } = useForm({
+  const [quantityMaxReached, setQuantityMaxReached] = useState<string | null>(
+    null
+  );
+  const {
+    saveButtonProps,
+    register,
+    watch,
+    control,
+    setValue,
+    formState: { isSubmitting, isDirty },
+  } = useForm({
     refineCoreProps: {
       resource: "orders",
     },
@@ -16,18 +28,30 @@ export const OrdersCreate: React.FC<IResourceComponentsProps> = () => {
       select: "id, product_name, currency, size, price, quantity",
     },
   });
-  const products = data?.data ?? [];
+  const products = useMemo(() => data?.data || [], [data?.data]);
 
   const selectedProduct = watch("product");
 
   // Find selected product
-  const product = products.find((p) => p.id === selectedProduct?.id);
+  const product = useMemo(
+    () => products.find((p) => p.id === selectedProduct?.id),
+    [products, selectedProduct?.id]
+  );
 
+  useEffect(() => {
+    setQuantityMaxReached(null);
+    setValue("quantity", 1);
+  }, [product, setValue]);
   return (
     <Create
       saveButtonProps={{
         ...saveButtonProps,
-        disabled: product?.quantity === 0,
+        disabled:
+          watch("quantity") <= 0 ||
+          product?.quantity === 0 ||
+          isSubmitting ||
+          !!quantityMaxReached ||
+          !isDirty,
       }}
     >
       <Controller
@@ -56,7 +80,6 @@ export const OrdersCreate: React.FC<IResourceComponentsProps> = () => {
           />
         )}
       />
-
       <TextField
         label="Product Size"
         margin="normal"
@@ -64,26 +87,37 @@ export const OrdersCreate: React.FC<IResourceComponentsProps> = () => {
         value={product?.size || ""}
         InputProps={{ readOnly: true }}
       />
-
       <TextField
         label="Price"
         margin="normal"
         fullWidth
-        value={`${product?.currency} ${product?.price}` || ""}
+        value={`${product?.currency || ""} ${product?.price || ""}`}
         InputProps={{ readOnly: true }}
       />
-
       {product?.quantity === 0 ? (
         <Typography>Out of stock</Typography>
       ) : (
         <TextField
           label="Quantity"
           type="number"
+          defaultValue={1}
           {...register("quantity")}
-          value={Number(watch("quantity"))}
+          onChange={(e) => {
+            const value = Number(e.target.value);
+
+            if (value > product?.quantity) {
+              setQuantityMaxReached("You have reached the max");
+            } else {
+              setValue("quantity", value);
+              setQuantityMaxReached(null);
+            }
+          }}
           fullWidth
           margin="normal"
         />
+      )}
+      {quantityMaxReached && (
+        <Typography color="red">{quantityMaxReached}</Typography>
       )}
     </Create>
   );
