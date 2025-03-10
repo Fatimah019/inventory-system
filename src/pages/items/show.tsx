@@ -1,15 +1,29 @@
 import { Typography } from "@mui/material";
-import { IResourceComponentsProps, useShow } from "@refinedev/core";
+import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
 import { Show } from "@refinedev/mui";
 import { format } from "date-fns";
 
 export const ItemsShow: React.FC<IResourceComponentsProps> = () => {
-  const { queryResult } = useShow({
+  const {
+    query: { data },
+  } = useShow({
     resource: "items",
   });
 
-  const { data, isLoading, isError } = queryResult;
-  if (isLoading || isError || !data.data)
+  const item = data?.data;
+  const {
+    data: itemData,
+    isLoading: itemLoading,
+    isError: itemError,
+  } = useOne({
+    resource: "items",
+    id: item?.id,
+    queryOptions: {
+      enabled: !!item?.id,
+    },
+  });
+
+  if (itemLoading || itemError || !itemData)
     return (
       <Show>
         <Typography>Loading</Typography>
@@ -17,17 +31,21 @@ export const ItemsShow: React.FC<IResourceComponentsProps> = () => {
     );
   return (
     <Show>
-      <Typography>Product Name: {data?.data?.product_name}</Typography>
-      <Typography>Product Size: {data?.data?.size.toUpperCase()}</Typography>
-      <Typography>Price: {data?.data?.price}</Typography>
-      <Typography>Currency: {data?.data?.currency}</Typography>
+      <Typography>Product Name: {itemData?.data?.product_name}</Typography>
+      <Typography>
+        Product Size: {itemData?.data?.size.toUpperCase()}
+      </Typography>
+      <Typography>Price: {itemData?.data?.price}</Typography>
+      <Typography>Currency: {itemData?.data?.currency}</Typography>
       <Typography>
         Quantity:{" "}
-        {data?.data?.quantity < 1 ? " Out of stock" : data?.data?.quantity}
+        {itemData?.data?.quantity < 1
+          ? " Out of stock"
+          : itemData?.data?.quantity}
       </Typography>
       <Typography>
         Date Created:{" "}
-        {format(new Date(data.data.created_at), "dd/MM/yyyy HH:mm a")}
+        {format(new Date(itemData.data.created_at), "dd/MM/yyyy HH:mm a")}
       </Typography>
     </Show>
   );

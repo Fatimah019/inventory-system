@@ -1,26 +1,12 @@
-import { Stack, TextField } from "@mui/material";
+import { Stack } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { IResourceComponentsProps, useTable } from "@refinedev/core";
 import { DeleteButton, EditButton, List, ShowButton } from "@refinedev/mui";
 import { format } from "date-fns";
-import { useState } from "react";
 
 export const OrdersList: React.FC<IResourceComponentsProps> = () => {
-  const [search, setSearch] = useState("");
-  const { tableQueryResult, setFilters } = useTable({
+  const { tableQuery } = useTable({
     resource: "orders",
-    // filters: {
-    //   initial: [
-    //     {
-    //       field: "product.product_name",
-    //       operator: "contains",
-    //       value: search,
-    //     },
-    //   ],
-    // },
-    // meta: {
-    //   select: "*, product:items(*)",
-    // },
   });
 
   const columns: GridColDef[] = [
@@ -74,7 +60,7 @@ export const OrdersList: React.FC<IResourceComponentsProps> = () => {
     },
   ];
 
-  const rows = tableQueryResult?.data?.data?.map((order) => ({
+  const rows = tableQuery?.data?.data?.map((order) => ({
     ...order,
     product_name: order.product?.product_name,
     size: order.product?.size,
@@ -82,42 +68,14 @@ export const OrdersList: React.FC<IResourceComponentsProps> = () => {
     currency: order.product?.currency,
   }));
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    // setFilters([
-    //   {
-    //     field: "product.product_name",
-    //     operator: "contains",
-    //     value: e.target.value,
-    //   },
-    // ]);
-    setFilters([
-      {
-        field: "product.product_name",
-        operator: "contains",
-        value: search,
-        // meta: {
-        //   select: "*, product:items(*)",
-        // },
-      },
-    ]);
-  };
   return (
     <List>
-      <TextField
-        label="Search Order"
-        variant="outlined"
-        fullWidth
-        value={search}
-        onChange={handleSearch}
-        sx={{ marginBottom: 2 }}
-      />
       <DataGrid
         rows={rows || []}
         columns={columns}
         getRowId={(row) => row.id}
         autoHeight
-        loading={tableQueryResult?.isLoading}
+        loading={tableQuery?.isLoading}
       />
     </List>
   );

@@ -30,7 +30,7 @@ export const ItemsEdit: React.FC<IResourceComponentsProps> = () => {
         <InputLabel>Product Size</InputLabel>
         <Controller
           control={control}
-          name="size" // This should match your API field name
+          name="size"
           render={({ field }) => (
             <Select {...field} value={field.value || ""}>
               {[
@@ -58,7 +58,7 @@ export const ItemsEdit: React.FC<IResourceComponentsProps> = () => {
 
         <Controller
           control={control}
-          name="currency" // This should match your API field name
+          name="currency"
           render={({ field }) => (
             <Select {...field} value={field.value || ""}>
               {[

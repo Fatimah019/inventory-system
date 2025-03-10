@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export const ItemsList: React.FC<IResourceComponentsProps> = () => {
   const [search, setSearch] = useState("");
-  const { tableQueryResult, setFilters } = useTable({
+  const { tableQuery, setFilters } = useTable({
     resource: "items",
     filters: {
       initial: [
@@ -82,11 +82,11 @@ export const ItemsList: React.FC<IResourceComponentsProps> = () => {
         sx={{ marginBottom: 2 }}
       />
       <DataGrid
-        rows={tableQueryResult?.data?.data || []}
+        rows={tableQuery?.data?.data || []}
         columns={columns}
         getRowId={(row) => row.id}
         autoHeight
-        loading={tableQueryResult?.isLoading}
+        loading={tableQuery?.isLoading}
       />
     </List>
   );
