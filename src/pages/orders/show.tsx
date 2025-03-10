@@ -4,11 +4,11 @@ import { Show } from "@refinedev/mui";
 import { format } from "date-fns";
 
 export const OrdersShow: React.FC<IResourceComponentsProps> = () => {
-  const { queryResult } = useShow({
+  const { query } = useShow({
     resource: "orders",
   });
 
-  const { data, isLoading, isError } = queryResult;
+  const { data, isLoading, isError } = query;
   if (isLoading || isError || !data.data)
     return (
       <Show>
