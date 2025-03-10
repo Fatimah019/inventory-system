@@ -136,11 +136,33 @@ function App() {
                   />
                   <Route
                     path="/register"
-                    element={<AuthPage type="register" />}
+                    element={
+                      <AuthPage
+                        type="register"
+                        title={
+                          <ThemedTitleV2
+                            collapsed={false}
+                            text="Inventory Management"
+                            icon={<AppIcon />}
+                          />
+                        }
+                      />
+                    }
                   />
                   <Route
                     path="/forgot-password"
-                    element={<AuthPage type="forgotPassword" />}
+                    element={
+                      <AuthPage
+                        type="forgotPassword"
+                        title={
+                          <ThemedTitleV2
+                            collapsed={false}
+                            text="Inventory Management"
+                            icon={<AppIcon />}
+                          />
+                        }
+                      />
+                    }
                   />
                 </Route>
               </Routes>
